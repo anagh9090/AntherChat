@@ -72,4 +72,4 @@ jobs:
           files: vector-app/build/outputs/apk/**/debug/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-org.gradle.java.home=/usr/lib/jvm/temurin-17-jdk-amd64
+
