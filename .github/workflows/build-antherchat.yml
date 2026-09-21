@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
 
       - name: Make Gradle Executable
@@ -58,7 +58,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Make Gradle Executable
         run: chmod +x gradlew
@@ -72,3 +72,4 @@ jobs:
           files: vector-app/build/outputs/apk/**/debug/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+org.gradle.java.home=/usr/lib/jvm/temurin-17-jdk-amd64
