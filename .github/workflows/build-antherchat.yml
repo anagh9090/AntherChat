@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    name: Build AntherChat Debug APK
+    name: Build AntherChat Release APK
     runs-on: ubuntu-latest
 
     steps:
@@ -34,14 +34,14 @@ jobs:
       - name: Make Gradle Executable
         run: chmod +x gradlew
 
-      - name: Build Debug APK
-        run: ./gradlew :vector-app:assembleDebug --no-daemon
+      - name: Build Release APK
+        run: ./gradlew :vector-app:assembleRelease --no-daemon
 
-      - name: Upload Debug APK Artifact
+      - name: Upload Release APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: AntherChat-Debug-APK
-          path: vector-app/build/outputs/apk/**/debug/*.apk
+          name: AntherChat-Release-APK
+          path: vector-app/build/outputs/apk/**/release/*.apk
           retention-days: 7
 
   release:
@@ -64,12 +64,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew :vector-app:assembleDebug --no-daemon
+        run: ./gradlew :vector-app:assembleRelease --no-daemon
 
       - name: Upload APK to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: vector-app/build/outputs/apk/**/debug/*.apk
+          files: vector-app/build/outputs/apk/**/release/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
